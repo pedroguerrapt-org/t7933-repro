@@ -1,0 +1,20 @@
+name: T-7933 PR Close Trigger Repro
+on:
+  pull_request:
+    types: [closed]
+  workflow_dispatch: {} # Manual fallback for comparison
+
+jobs:
+  pr-close-cleanup:
+    runs-on: depot-ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Log trigger info
+        run: |
+          echo "Event: ${{ github.event_name }}"
+          echo "Action: ${{ github.event.action }}"
+          echo "PR number: ${{ github.event.pull_request.number }}"
+          echo "PR merged: ${{ github.event.pull_request.merged }}"
+          echo "PR state: ${{ github.event.pull_request.state }}"
+          echo "Trigger fired successfully"
