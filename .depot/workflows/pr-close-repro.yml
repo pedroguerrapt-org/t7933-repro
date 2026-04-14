@@ -2,7 +2,7 @@ name: T-7933 PR Close Trigger Repro
 on:
   pull_request:
     types: [closed]
-  workflow_dispatch: {} # Manual fallback for comparison
+  workflow_dispatch:
 
 jobs:
   pr-close-cleanup:
